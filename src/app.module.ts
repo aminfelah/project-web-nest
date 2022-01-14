@@ -6,10 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { MailModule } from './mail/mail.module';
 
 const entities = [User];
 @Module({
   imports: [
+    MailModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -25,6 +27,7 @@ const entities = [User];
     }),
     UsersModule,
     AuthModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,14 +8,18 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
   import * as bcrypt from 'bcryptjs';
+import { IsBoolean, IsString } from 'class-validator';
   
   @Entity()
   export class User extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
   
     @Column({ unique: true })
     email: string;
+
+    @Column()
+    username: string;
   
     @Column()
     password: string;
@@ -27,6 +31,14 @@ import {
     @Column()
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @Column()
+    @IsBoolean()
+    accountActivated: boolean;
+    
+    @Column()
+    @IsString()
+    accountToken: String;
   
     @BeforeInsert()
     async hashPassword() {

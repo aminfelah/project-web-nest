@@ -11,6 +11,10 @@ export class UsersController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
+  @Get('/confirm/:token')
+  activateAccount(@Param('token') token: string) {
+    return this.usersService.activateAccount(token);
+  }
 
   @Get(':id')
   show(@Param('id') id: string) {
