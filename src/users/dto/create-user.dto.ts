@@ -5,5 +5,26 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty()
+  username: string;
+
+  @IsNotEmpty()
+  firstname: string;
+
+  @IsNotEmpty()
+  lastname: string;
+
+  @IsNotEmpty()
+  dateOfBirth: string;
+
+  @IsNotEmpty()
+  residence: string;
+
+  @IsNotEmpty()
+  adress: string;
+
+  @IsNotEmpty()
+  phonenumber:String;
+
+  @IsNotEmpty()
   password: string;
 }

@@ -63,4 +63,19 @@ export class UsersService {
       },
     });
   }
+  async showByEmail(email: string) {
+    const user =  await User.findOne({
+      where: {
+        email: email,
+      },
+    });
+    delete user.password;
+    delete user.id;
+    delete user.updatedAt;
+    delete user.createdAt;
+    delete user.accountActivated;
+    delete user.accountToken;
+
+    return user ;
+  }
 }

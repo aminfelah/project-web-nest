@@ -20,6 +20,13 @@ import { IsBoolean, IsString } from 'class-validator';
 
     @Column()
     username: string;
+
+    @Column()
+    firstname: string;
+
+
+    @Column()
+    lastname: string;
   
     @Column()
     password: string;
@@ -36,6 +43,22 @@ import { IsBoolean, IsString } from 'class-validator';
     @IsBoolean()
     accountActivated: boolean;
     
+
+    @Column()
+    dateOfBirth:String;
+
+    @Column()
+    residence:String;
+
+    @Column()
+    adress:String;
+
+    @Column()
+    phonenumber:String;
+
+    @Column()
+    profilepic:String;
+
     @Column()
     @IsString()
     accountToken: String;

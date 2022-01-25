@@ -17,11 +17,16 @@ export class AuthService {
 
     const payload = {
       userId: user.id,
-      userAccountActivated:user.accountActivated
+      userAccountActivated: user.accountActivated,
     };
-
+    delete user.password;
+    delete user.accountActivated;
+    delete user.accountToken;
+    delete user.createdAt;
+    delete user.updatedAt;
     return {
       access_token: this.jwtService.sign(payload),
+      user: user,
     };
   }
 
@@ -29,6 +34,10 @@ export class AuthService {
     const { email, password } = authLoginDto;
 
     const user = await this.usersService.findByEmail(email);
+    
+    if (!user.accountActivated){
+      throw new UnauthorizedException("user not activated yet ");
+    }
     if (!(await user?.validatePassword(password))) {
       throw new UnauthorizedException();
     }

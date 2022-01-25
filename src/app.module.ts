@@ -7,6 +7,10 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { TicketsModule } from './tickets/tickets.module';
+
+
 
 const entities = [User];
 @Module({
@@ -24,10 +28,15 @@ const entities = [User];
       database: process.env.DB_NAME,
       entities: entities,
       synchronize: true,
+    }),MulterModule.register({
+      dest: './files',
     }),
     UsersModule,
     AuthModule,
     MailModule,
+    TicketsModule,
+
+
   ],
   controllers: [AppController],
   providers: [AppService],
