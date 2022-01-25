@@ -9,10 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { TicketsModule } from './tickets/tickets.module';
+import { BookingModule } from './booking-module/booking.module';
 
 
 
-const entities = [User];
+
 @Module({
   imports: [
     MailModule,
@@ -26,7 +27,7 @@ const entities = [User];
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: entities,
+      autoLoadEntities:true,
       synchronize: true,
     }),MulterModule.register({
       dest: './files',
@@ -35,6 +36,7 @@ const entities = [User];
     AuthModule,
     MailModule,
     TicketsModule,
+    BookingModule
 
 
   ],
