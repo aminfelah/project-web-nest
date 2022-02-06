@@ -4,12 +4,13 @@ import { ConfigModule } from '@nestjs/config';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { User } from './users/user.entity';
+
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { TicketsModule } from './tickets/tickets.module';
 import { BookingModule } from './booking-module/booking.module';
+import { CarsModule } from './car-rent/car-rent.module';
 
 
 
@@ -36,9 +37,8 @@ import { BookingModule } from './booking-module/booking.module';
     AuthModule,
     MailModule,
     TicketsModule,
-    BookingModule
-
-
+    BookingModule,
+    CarsModule
   ],
   controllers: [AppController],
   providers: [AppService],
