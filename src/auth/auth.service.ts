@@ -32,9 +32,9 @@ export class AuthService {
 
   async validateUser(authLoginDto: AuthLoginDto): Promise<User> {
     const { email, password } = authLoginDto;
-
+   
     const user = await this.usersService.findByEmail(email);
-    
+  
     if (!user.accountActivated){
       throw new UnauthorizedException("user not activated yet ");
     }
